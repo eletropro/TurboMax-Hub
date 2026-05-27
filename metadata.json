@@ -1,0 +1,6 @@
+{
+  "name": "TurboMax HUD - Analisador de Corridas",
+  "description": "Dashboard inteligente com HUD flutuante automático para extração de ofertas e análise de lucro em Uber & 99.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

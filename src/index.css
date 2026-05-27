@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;650;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-bento-bg: #050505;
+  --color-bento-card: #111111;
+  --color-bento-card-light: #161616;
+  --color-bento-blue: #2563eb;
+  --color-bento-blue-hover: #1d4ed8;
+}
+
+body {
+  background-color: #050505;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.02) 0%, transparent 100%);
+  background-attachment: fixed;
+}
+
+/* Micro smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 300ms;
+}
+
+/* Custom keyframes for premium scanner laser effects */
+@keyframes laser-sweep {
+  0% { transform: translateY(0); opacity: 0.8; }
+  50% { transform: translateY(180px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.8; }
+}
+
+.scanner-laser {
+  animation: laser-sweep 2.5s infinite ease-in-out;
+}
+
+/* Glowing text and borders effects to support Bento look */
+.text-neon-cyan {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.text-neon-emerald {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.border-neon-cyan {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+/* Bento card specific utility class */
+.bento-card {
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem; /* 24px rounded */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.bento-card-interactive {
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.08), 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bento-grid-item {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom scrollbar for raw sleek appearance */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
