@@ -44,87 +44,30 @@ export default function App() {
   });
 
   // History state preloaded with some realistic simulation entries from "yesterday"
-  const [history, setHistory] = useState<RideInfo[]>([
-    {
-      id: "hist-1",
-      app: "Uber",
-      category: "Comfort",
-      value: 48.50,
-      distance: 10.5,
-      timeMinutes: 20,
-      pickupAddress: "Aeroporto de Congonhas, São Paulo",
-      destinationAddress: "Av. Paulista, 1200 - Bela Vista",
-      classification: "excellent",
-      timestamp: new Date(Date.now() - 3600000 * 2).toISOString(),
-      fuelCost: 5.25,
-      netProfit: 43.25,
-      earningsPerKm: 4.62,
-      earningsPerMinute: 2.43,
-      recommendation: "accept",
-      aiExplanation: "Corrida excelente! R$ 4,62 por km rodado e R$ 145 por hora. Ótimo custo-benefício.",
-      riskLevel: "low"
-    },
-    {
-      id: "hist-2",
-      app: "99",
-      category: "99Pop",
-      value: 14.20,
-      distance: 8.4,
-      timeMinutes: 25,
-      pickupAddress: "Rua Augusta, 1500 - Consolação",
-      destinationAddress: "Vila Guilherme, Zona Norte",
-      classification: "average",
-      timestamp: new Date(Date.now() - 3600000 * 5).toISOString(),
-      fuelCost: 4.20,
-      netProfit: 10.00,
-      earningsPerKm: 1.69,
-      earningsPerMinute: 0.57,
-      recommendation: "attention",
-      aiExplanation: "Atenção: R$ 1,69 por km fica um pouco abaixo da taxa ideal de R$ 2,00. O trânsito local encarece o tempo.",
-      riskLevel: "medium"
-    }
-  ]);
+  const [history, setHistory] = useState<RideInfo[]>([]);
 
   // Affiliate module state
   const [affiliate, setAffiliate] = useState<AffiliateInfo>({
-    referralCode: "DRIVER-JET-8392",
-    referralsCount: 5,
-    commissionsEarned: 25.00,
+    referralCode: "TURBO-MAX-777",
+    referralsCount: 0,
+    commissionsEarned: 0.00,
     plan: "gratis"
   });
 
   // Main interactive active test ride scanner hook
-  const [activeRide, setActiveRide] = useState<RideInfo | null>({
-    id: "init-ride",
-    app: "Uber",
-    category: "UberX",
-    value: 34.50,
-    distance: 7.2,
-    timeMinutes: 18,
-    pickupAddress: "Av. Paulista, 1000 - Bela Vista, São Paulo",
-    destinationAddress: "Av. Ibirapuera, 2100 - Moema, São Paulo",
-    classification: "excellent",
-    timestamp: new Date().toISOString(),
-    fuelCost: 3.60,
-    netProfit: 30.90,
-    earningsPerKm: 4.79,
-    earningsPerMinute: 1.92,
-    recommendation: "accept",
-    aiExplanation: "Selecione uma corrida do simulador acima ou faça upload de um print para iniciar! Esta corrida de teste da Av. Paulista para Moema oferece excelentes R$ 4,79 por km.",
-    riskLevel: "low"
-  });
+  const [activeRide, setActiveRide] = useState<RideInfo | null>(null);
 
   // Simulated Overlay floating HUD state
   const [overlayRide, setOverlayRide] = useState<RideInfo | null>(null);
 
   // Compute stats on-the-fly from the accepted ride history
   const [stats, setStats] = useState<DriverStats>({
-    totalEarnings: 62.70,
-    totalKm: 18.9,
-    totalTimeMinutes: 45,
-    acceptedCount: 2,
-    rejectedCount: 1,
-    scannedCount: 3
+    totalEarnings: 0.0,
+    totalKm: 0.0,
+    totalTimeMinutes: 0,
+    acceptedCount: 0,
+    rejectedCount: 0,
+    scannedCount: 0
   });
 
   // Re-calculate statistics dynamically whenever the history changes
@@ -487,11 +430,11 @@ export default function App() {
 
                   </div>
 
-                  {/* JetMax Custom Floating Super-Overlay HUD injected on simulator screen! */}
+                  {/* TurboMax Custom Floating Super-Overlay HUD injected on simulator screen! */}
                   <div className="bg-[#111111]/95 border border-blue-500/50 shadow-[0_0_20px_rgba(37,99,235,0.2)] rounded-2xl p-3.5 space-y-2 relative overflow-hidden">
                     <div className="flex justify-between items-center border-b border-white/5 pb-1.5 text-[9px] font-mono">
                       <span className="text-blue-400 font-bold flex items-center gap-1 text-xs">
-                        <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" /> JetMax Auto-HUD
+                        <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" /> TurboMax Auto-HUD
                       </span>
                       <span className={`font-bold uppercase text-[10px] ${
                         activeRide.classification === "excellent" ? "text-emerald-400" : "text-amber-500"

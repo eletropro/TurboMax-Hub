@@ -291,7 +291,7 @@ export default function OcrScanner({ settings, onRideAnalyzed, activeOverlayRide
             <Smartphone className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white tracking-wide uppercase font-mono">Simulador de Corridas JetMax</h3>
+            <h3 className="text-sm font-bold text-white tracking-wide uppercase font-mono">Simulador de Corridas TurboMax</h3>
             <p className="text-xs text-slate-400">Clique para simular o recebimento instantâneo de uma corrida e testar a IA</p>
           </div>
         </div>

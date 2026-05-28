@@ -327,7 +327,7 @@ export default function SettingsView({ settings, onSaveSettings }: SettingsViewP
             </div>
 
             <div className="mt-8 border-t border-white/5 pt-4 text-[10px] text-slate-500 leading-normal font-mono">
-              🛡️ Dica de segurança JetMax: Para destinos perigosos, o sistema do app realiza um scan geográfico aproximado local para te alertar antes de você pegar o passageiro.
+              🛡️ Dica de segurança TurboMax: Para destinos perigosos, o sistema do app realiza um scan geográfico aproximado local para te alertar antes de você pegar o passageiro.
             </div>
           </div>
         </div>

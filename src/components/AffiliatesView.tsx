@@ -23,7 +23,7 @@ export default function AffiliatesView({ affiliate, onUpgradePlan, mockLogin, us
     onUpgradePlan(plan);
     setSuccessMsg(
       plan === "premium" 
-        ? "Assinatura JetMax Premium ativada! Obrigado por apoiar os motoristas com inteligência artificial." 
+        ? "Assinatura TurboMax Premium ativada! Obrigado por apoiar os motoristas com inteligência artificial." 
         : "Seu plano foi alterado para Grátis."
     );
     setTimeout(() => setSuccessMsg(""), 4000);
@@ -148,7 +148,7 @@ export default function AffiliatesView({ affiliate, onUpgradePlan, mockLogin, us
               <div className="space-y-3">
                 <div className="flex items-center gap-1.5">
                   <Sparkles className="w-4 h-4 text-cyan-400" />
-                  <h4 className="text-sm font-semibold text-white">Plano JetMax Pro</h4>
+                  <h4 className="text-sm font-semibold text-white">Plano TurboMax Pro</h4>
                 </div>
                 <div className="flex items-baseline gap-1">
                   <span className="text-xl font-extrabold text-cyan-400">R$ 19,90</span>
@@ -183,7 +183,7 @@ export default function AffiliatesView({ affiliate, onUpgradePlan, mockLogin, us
                     : "bg-gradient-to-r from-cyan-600 to-cyan-500 text-white hover:brightness-110 cursor-pointer"
                 }`}
               >
-                {affiliate.plan === "premium" ? "Plano Ativo" : "Assinar JetMax Premium"}
+                {affiliate.plan === "premium" ? "Plano Ativo" : "Assinar TurboMax Premium"}
               </button>
             </div>
           </div>

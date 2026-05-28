@@ -94,7 +94,7 @@ export default function OverlayWidget({ ride, onClose }: OverlayWidgetProps) {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
           </span>
-          <span className="text-[10px] font-mono tracking-widest font-black text-slate-400">JETMAX OVERLAY HUD</span>
+          <span className="text-[10px] font-mono tracking-widest font-black text-slate-400">TURBOMAX OVERLAY HUD</span>
         </div>
 
         <div className="flex items-center gap-1.5 non-drag">
