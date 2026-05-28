@@ -33,18 +33,26 @@ export default function DashboardView({ stats, settings, history }: DashboardVie
     { neighborhood: "Savassi / Lourdes (BH)", demandMultiplier: "1.6x", averagePrice: "R$ 24.50/corrida", status: "Estável-Alta", color: "text-amber-400 bg-amber-950/40 border-amber-500/20" }
   ];
 
-  // 7-day earnings dataset for custom inline SVG graphing
-  const weeklyData = [
-    { day: "Seg", value: 180 },
-    { day: "Ter", value: 240 },
-    { day: "Qua", value: 195 },
-    { day: "Qui", value: stats.scannedCount > 0 ? Math.max(stats.totalEarnings, 150) : 310 },
-    { day: "Sex", value: 380 },
-    { day: "Sáb", value: 450 },
-    { day: "Dom", value: 280 }
-  ];
+  // Group real history by day of week to construct authentic charts
+  const daysOfWeek = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
+  const weeklyData = daysOfWeek.map(day => ({ day, value: 0 }));
 
-  const maxWeeklyVal = Math.max(...weeklyData.map(d => d.value));
+  history.forEach(ride => {
+    try {
+      const date = new Date(ride.timestamp);
+      // Get standard day index where 0 is Sunday, 1 is Monday, etc.
+      const rawDayIndex = date.getDay();
+      // Map so Monday is index 0, Sunday is index 6
+      const mappedIndex = rawDayIndex === 0 ? 6 : rawDayIndex - 1;
+      if (mappedIndex >= 0 && mappedIndex < 7) {
+        weeklyData[mappedIndex].value += parseFloat(ride.value.toFixed(2));
+      }
+    } catch (err) {
+      // safe fallback
+    }
+  });
+
+  const maxWeeklyVal = Math.max(...weeklyData.map(d => d.value)) || 100;
 
   return (
     <div className="space-y-6">
@@ -147,6 +155,14 @@ export default function DashboardView({ stats, settings, history }: DashboardVie
 
             {/* Premium custom responsive SVG barchart */}
             <div className="relative w-full h-[220px] flex items-end">
+              {weeklyData.reduce((acc, curr) => acc + curr.value, 0) === 0 && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 rounded-2xl border border-white/5 pointer-events-none select-none z-10">
+                  <span className="text-[10px] font-mono text-blue-400 font-bold uppercase tracking-wider mb-1">Gráfico de Ganhos Zerado</span>
+                  <p className="text-[10px] text-slate-500 font-mono text-center px-4 max-w-xs">
+                    Aguardando a primeira corrida do simulador para gerar a projeção semanal.
+                  </p>
+                </div>
+              )}
               <svg className="w-full h-full" viewBox="0 0 600 200" preserveAspectRatio="none">
                 {/* Y grids */}
                 <line x1="30" y1="20" x2="580" y2="20" stroke="#222222" strokeDasharray="3,3" />
